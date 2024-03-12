@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize";
-import pool from '../config/Database.js';
+import db from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
 
-const Barang = pool.define(
- "barang",
+const Barang = db.define(
+  "barang",
   {
     name: {
       type: DataTypes.STRING,
@@ -44,7 +44,7 @@ const Barang = pool.define(
     datein: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
@@ -52,7 +52,7 @@ const Barang = pool.define(
     dateout: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
@@ -69,8 +69,5 @@ const Barang = pool.define(
     freezeTableName: true,
   }
 );
-
-Users.hasMany(Barang);
-Barang.belongsTo(Users, { foreignKey: "userId" });
 
 export default Barang;
