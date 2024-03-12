@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const db = mysql.createPool({
+const db = mysql.createdb({
     host: process.env.DB_HOST, 
     user: process.env.DB_USERNAME, 
     password: process.env.DB_PASSWORD,
