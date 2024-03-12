@@ -28,11 +28,8 @@ const Barang = pool.define(
       },
     },
     code: {
-      type: DataTypes.CHAR(20),
+      type: DataTypes.CHAR(20), // Make sure CHAR is defined properly
       allowNull: true,
-      validate: {
-        notEmpty: true,
-      },
     },
     location: {
       type: DataTypes.STRING,
@@ -44,7 +41,7 @@ const Barang = pool.define(
     datein: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: Sequelize.NOW, // Provide as a function: defaultValue: Sequelize.fn('NOW')
       validate: {
         notEmpty: true,
       },
@@ -52,7 +49,7 @@ const Barang = pool.define(
     dateout: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: Sequelize.NOW, // Provide as a function: defaultValue: Sequelize.fn('NOW')
       validate: {
         notEmpty: true,
       },
