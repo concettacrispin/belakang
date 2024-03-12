@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import pool from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Users = db.define(
+const Users = pool.define(
   "users",
   {
     uuid: {
