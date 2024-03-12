@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import pool from "../config/Database.js";
+import pool from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
 
@@ -7,10 +7,12 @@ const Users = pool.define(
   "users",
   {
     uuid: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       defaultValue: Sequelize.UUIDV4,
       allowNull: false,
-      primaryKey: true,
+      validate: {
+        notEmpty: true,
+      },
     },
     name: {
       type: DataTypes.STRING,
@@ -23,7 +25,6 @@ const Users = pool.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -51,13 +52,6 @@ const Users = pool.define(
       },
     },
     division: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    status: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
