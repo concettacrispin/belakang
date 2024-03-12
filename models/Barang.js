@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import pool from "../config/Database.js";
 import Users from "./UserModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Barang = db.define(
+const Barang = db.pool(
   "barang",
   {
     name: {
