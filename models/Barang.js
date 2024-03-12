@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
-import pool from '../config/Database.js';
+import db from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
 
-const Barang = pool.define(
+const Barang = db.define(
   "barang",
   {
     name: {
