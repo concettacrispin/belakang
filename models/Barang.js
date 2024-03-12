@@ -1,7 +1,5 @@
-import { Sequelize } from "sequelize";
-import db from '../config/Database.js';
-
-const { DataTypes } = Sequelize;
+import { DataTypes } from "sequelize";
+import db from '../config/Database.js'; // Mengimpor instance Sequelize dari file konfigurasi Database.js
 
 const Barang = db.define(
   "barang",
@@ -44,7 +42,7 @@ const Barang = db.define(
     datein: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: DataTypes.NOW,
       validate: {
         notEmpty: true,
       },
@@ -52,7 +50,7 @@ const Barang = db.define(
     dateout: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.NOW,
+      defaultValue: DataTypes.NOW,
       validate: {
         notEmpty: true,
       },
