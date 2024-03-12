@@ -1,5 +1,6 @@
+// Barang.js
 import { DataTypes } from "sequelize";
-import db from '../config/Database.js'; // Mengimpor instance Sequelize dari file konfigurasi Database.js
+import db from '../config/Database.js';
 
 const Barang = db.define(
   "barang",
