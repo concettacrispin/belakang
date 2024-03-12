@@ -1,14 +1,15 @@
+// UserModel.js
 import { Sequelize } from "sequelize";
-import pool from "../config/Database.js";
+import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Users = pool.define(
+const Users = db.define(
   "users",
   {
     uuid: {
       type: DataTypes.STRING,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: Sequelize.UUIDV4,
       allowNull: false,
       validate: {
         notEmpty: true,
