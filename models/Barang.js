@@ -1,6 +1,7 @@
-// Barang.js
-import { DataTypes } from "sequelize";
+import { Sequelize } from "sequelize";
 import db from '../config/Database.js';
+
+const { DataTypes } = Sequelize;
 
 const Barang = db.define(
   "barang",
@@ -43,7 +44,7 @@ const Barang = db.define(
     datein: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
@@ -51,7 +52,7 @@ const Barang = db.define(
     dateout: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
