@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
-import Users from "./UserModel.js";
+import db from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
 
@@ -45,7 +44,7 @@ const Barang = db.define(
     datein: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
@@ -53,7 +52,7 @@ const Barang = db.define(
     dateout: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      defaultValue: Sequelize.NOW,
       validate: {
         notEmpty: true,
       },
@@ -70,8 +69,5 @@ const Barang = db.define(
     freezeTableName: true,
   }
 );
-
-Users.hasMany(Barang);
-Barang.belongsTo(Users, { foreignKey: "userId" });
 
 export default Barang;
