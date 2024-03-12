@@ -1,65 +1,65 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Users from "./UserModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Barang = db.define(
-  "barang",
+const Users = db.define(
+  "users",
   {
+    uuid: {
+      type: DataTypes.STRING,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
+        len: [3, 100],
       },
     },
-    image: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isEmail: true,
+      },
+    },
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-    url: {
+    role: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-    code: {
-      type: DataTypes.CHAR(20),
-      allowNull: true,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    location: {
+    office: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
     },
-    datein: {
-      type: DataTypes.DATE,
+    division: {
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
       validate: {
         notEmpty: true,
       },
     },
-    dateout: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    userId: {
-      type: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -71,7 +71,4 @@ const Barang = db.define(
   }
 );
 
-Users.hasMany(Barang);
-Barang.belongsTo(Users, { foreignKey: "userId" });
-
-export default Barang;
+export default Users;
