@@ -7,12 +7,10 @@ const Users = pool.define(
   "users",
   {
     uuid: {
-      type: DataTypes.STRING,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -25,6 +23,7 @@ const Users = pool.define(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
